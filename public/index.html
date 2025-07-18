@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>First Date</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Vidéo de fond -->
+  <video autoplay muted loop class="background-video">
+    <source src="https://cdn.coverr.co/videos/coverr-smiling-woman-on-video-call-6854/1080p.mp4" type="video/mp4">
+  </video>
+
+  <!-- Modal de création de profil -->
+  <div id="profileModal">
+    <h1>👋 Bienvenue sur First Date</h1>
+    <input type="text" id="pseudoInput" placeholder="Choisis un pseudo..." />
+    <select id="avatarSelect">
+      <option>🐱</option>
+      <option>🐶</option>
+      <option>🐵</option>
+      <option>🦊</option>
+      <option>🐼</option>
+    </select>
+    <button onclick="createProfile()">Entrer</button>
+  </div>
+
+  <!-- Application principale -->
+  <div class="app" style="display: none;">
+    <div class="video-container">
+      <div class="overlay">
+        <div class="status-bar">Connecté en tant que : <span id="currentUser"></span></div>
+        <div class="social-score" id="trustScore">Trust Score: 100%</div>
+        <div class="chat-box" id="chatBox"></div>
+        <div class="controls">
+          <input type="text" id="messageInput" placeholder="Écris ton message..." />
+          <button onclick="sendMessage()">Envoyer</button>
+          <button onclick="nextChat()">Next</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="webrtc.js"></script>
+</body>
+</html>
