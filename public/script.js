@@ -39,7 +39,8 @@ if (!pseudo || !avatar) {
 }
 
 function launchChat() {
-  const ws = new WebSocket("ws://localhost:3000");
+  const ws = new WebSocket(`wss://${window.location.host}`);
+
   window.ws = ws;
 
   const chatBox = document.getElementById("chatBox");
