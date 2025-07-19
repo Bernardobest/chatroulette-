@@ -1,6 +1,7 @@
 let pseudo = localStorage.getItem("pseudo") || "";
 let avatar = localStorage.getItem("avatar") || "";
 
+// === Création de profil ===
 window.createProfile = function () {
   const input = document.getElementById("pseudoInput");
   const selected = document.getElementById("avatarSelect");
@@ -27,6 +28,7 @@ window.createProfile = function () {
   launchChat();
 };
 
+// Affiche ou cache la modale
 if (!pseudo || !avatar) {
   const modal = document.getElementById("profileModal");
   if (modal) modal.style.display = "flex";
@@ -38,9 +40,12 @@ if (!pseudo || !avatar) {
   launchChat();
 }
 
+// === Lancement du chat ===
 function launchChat() {
-  const ws = new WebSocket(`wss://${window.location.host}`);
-
+  const wsUrl = window.location.protocol === "https:" 
+    ? `wss://${window.location.host}` 
+    : `ws://${window.location.host}`;
+  const ws = new WebSocket(wsUrl);
   window.ws = ws;
 
   const chatBox = document.getElementById("chatBox");
