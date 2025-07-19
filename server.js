@@ -67,7 +67,8 @@ wss.on("connection", (ws) => {
 
 app.use(express.static(path.join(__dirname, "..", "public")));
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-  console.log(`✅ Serveur WebSocket et HTTP lancé sur http://localhost:${PORT}`);
+  console.log(`🚀 Serveur HTTP + WebSocket lancé sur port ${PORT}`);
 });
+
