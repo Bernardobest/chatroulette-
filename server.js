@@ -65,10 +65,19 @@ wss.on("connection", (ws) => {
   });
 });
 
-app.use(express.static(path.join(__dirname, "..", "public")));
+// ======== FIX CSP ========
+app.use((req, res, next) => {
+  res.setHeader(
+    "Content-Security-Policy",
+    "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;"
+  );
+  next();
+});
+
+// ======== SERVE STATIC ========
+app.use(express.static(path.join(__dirname, "public")));
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
   console.log(`🚀 Serveur HTTP + WebSocket lancé sur port ${PORT}`);
 });
-
