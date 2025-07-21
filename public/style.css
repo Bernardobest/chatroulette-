@@ -1,19 +1,8 @@
-/* === Réinitialisation de base === */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* Reset basique */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body, html { height: 100%; font-family: 'Segoe UI', sans-serif; background: #000; color: #fff; overflow: hidden; }
 
-body, html {
-  height: 100%;
-  font-family: 'Segoe UI', sans-serif;
-  background: #000;
-  color: white;
-  overflow: hidden;
-}
-
-/* === Vidéo de fond === */
+/* Vidéo de fond */
 .background-video {
   position: fixed;
   top: 0;
@@ -25,7 +14,7 @@ body, html {
   z-index: 0;
 }
 
-/* === Profil Modal façon TikTok === */
+/* Modal profil */
 #profileModal {
   position: fixed;
   top: 50%;
@@ -37,97 +26,75 @@ body, html {
   border-radius: 20px;
   text-align: center;
   z-index: 10;
-  color: white;
   width: 90%;
   max-width: 360px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
-
 #profileModal input,
-#profileModal select {
+#profileModal select,
+#profileModal button {
   width: 100%;
   padding: 12px;
-  font-size: 16px;
   border: none;
   border-radius: 10px;
-}
-
-#profileModal button {
-  padding: 12px;
-  width: 100%;
   font-size: 16px;
+}
+#profileModal button {
   background: #00acee;
-  border: none;
-  border-radius: 30px;
   color: white;
   cursor: pointer;
-  transition: background 0.2s;
 }
+#profileModal button:hover { background: #007bb5; }
 
-#profileModal button:hover {
-  background: #007bb5;
-}
-
-/* === Application === */
-.app {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-  z-index: 1;
-  position: relative;
-}
-
-.video-container {
+/* Zone vidéo */
+#videoWrapper {
   position: relative;
   width: 100%;
   height: 100%;
+  z-index: 1;
 }
-
-.overlay {
-  position: relative;
-  z-index: 2;
+#local {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 120px;
+  height: 90px;
+  border: 2px solid #00acee;
+  border-radius: 12px;
+  z-index: 10;
+}
+#remote {
+  width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 20px;
+  object-fit: cover;
 }
 
-/* === Zone info === */
-.status-bar, .social-score {
-  margin-bottom: 10px;
-  font-weight: bold;
-  color: #fff;
-  background: rgba(255,255,255,0.1);
-  padding: 8px 16px;
-  border-radius: 20px;
-  text-align: center;
-  backdrop-filter: blur(4px);
-}
-
-/* === Zone chat === */
+/* Chat */
 .chat-box {
-  height: 240px;
-  background: rgba(255,255,255,0.07);
-  border: 1px solid #00acee;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.07);
   border-radius: 12px;
   overflow-y: auto;
   padding: 12px;
-  margin-bottom: 10px;
   font-size: 14px;
-  backdrop-filter: blur(3px);
+  position: absolute;
+  bottom: 80px;
+  left: 10px;
+  right: 10px;
+  z-index: 5;
 }
 
-/* === Input + boutons === */
+/* Contrôles */
 .controls {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
   display: flex;
   gap: 10px;
 }
-
 .controls input {
   flex: 1;
   padding: 10px;
@@ -137,69 +104,15 @@ body, html {
   background: #111;
   color: white;
 }
-
 .controls button {
+  padding: 10px 20px;
   background: #00acee;
   border: none;
-  border-radius: 30px;
-  padding: 10px 20px;
+  border-radius: 10px;
   color: white;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.2s ease;
 }
-
-.controls button:hover {
-  background: #007bb5;
-}
-
-
-
-#profileModal input,
-#profileModal select {
-  width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  border-radius: 10px;
-  border: none;
-  font-size: 16px;
-}
-
-#profileModal button {
-  width: 100%;
-  padding: 12px;
-  margin-top: 20px;
-  background: #00acee;
-  border: none;
-  border-radius: 30px;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-#profileModal button:hover {
-  background: #007bb5;
-}
-.local-video, .remote-video {
-  position: fixed;
-  width: 200px;
-  height: 150px;
-  border-radius: 12px;
-  object-fit: cover;
-  z-index: 5;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
-
-.local-video {
-  bottom: 20px;
-  right: 20px;
-  border: 2px solid #00acee;
-}
-
-.remote-video {
-  bottom: 20px;
-  left: 20px;
-  border: 2px solid #ff4081;
-}
+.controls button:hover { background: #007bb5; }
 
 
